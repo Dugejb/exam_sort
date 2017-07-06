@@ -37,7 +37,7 @@
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">登录</h1>
 		</header>
-		<div class="mui-content">
+		<div class="mui-content" id="app">
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<label>账号</label>
@@ -49,11 +49,12 @@
 				</div>
 			</form>
 			<div class="mui-content-padded">
-				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>				
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary" onclick="location.href='main.html'">登录</button>				
 			</div>
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
+	<script src="js/vue.js"></script>
 	<script type="text/javascript">
 		mui.init()
 	</script>
