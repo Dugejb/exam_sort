@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body,.mui-content{
+				background: #fff;
+				font-family: "黑体";
+			}
+			.mui-bar{
+				background: #007AFF;
+			}
+			.mui-title{
+				color: #fff;
+			}
+			.mui-bar .mui-icon{
+				color:#fff;
+			}
+			img{
+				float: left;
+				width:30px;
+				margin:0 10px;
+				vertical-align: middle;
+			}
+			.title{
+				margin-top:20px;
+				height: 30px;
+				vertical-align: middle;
+			}
+			.title span{
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.detail{
+				padding:20px 0 0 50px;
+			}
+			.detail p{
+				color:#333;
+				font-family:"microsoft yahei" ;
+				margin-bottom: 5px;
+			}
+			.detail .status{
+				display: inline-block;
+				margin-left: 30px;
+				color:green;
+			}
+			.status.active{
+				color:red;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>		
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">成绩</h1>
+		</header>
+		<div class="mui-content">	
+			<div  class="title">
+			<img src="images/user-photo.png">
+			
+			<span>您的成绩是<strong> 90 </strong>分，详情如下：</span>
+			</div>
+			<div class="detail">
+			<p>单号：123456789123456<span class="status">正确</span></p>
+			<p>单号：123456789123456<span class="status">正确</span></p>
+			<p>单号：123456789123456<span class="status">正确</span></p>
+			<p>单号：123456789123456<span class="status active">错误</span></p>
+			<p>单号：123456789123456<span class="status">正确</span></p>
+			<p>单号：123456789123456<span class="status">正确</span></p>
+			</div>
+		</div>
+
+	</body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+</html>
