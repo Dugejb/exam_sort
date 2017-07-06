@@ -71,12 +71,12 @@
 		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
 			<h1 class="mui-title">分拣考试系统</h1>
 		</header>
-		<div class="mui-content">				
+		<div class="mui-content" id="app">				
 				<div class="scan-province">
 					<p class="instruction">扫描省包条码：</p>
 					<div class="mui-input-row">					
 						<label><img src="images/bar.png"></label>
-						<input type="text" placeholder="请扫描省包条码">
+						<input v-model="provinceCode" type="text" placeholder="请扫描省包条码">
 					</div>		
 					<p class="mui-h6">提示：点击条形码图标重新扫描条码</p>
 					
@@ -87,7 +87,7 @@
 					<p class="mui-h6">已扫描快件：<strong>1</strong> 张</p>
 					<div class="mui-input-row" ms-visible="scanType=='single'">
 						<label><img src="images/bar.png"></label>
-						<input type="text" placeholder="请扫描快递单">
+						<input v-model='postCode' type="text" placeholder="请扫描快递单">
 						<img src="images/minus-s.png" class="delete">
 					</div>
 				</div>
@@ -95,11 +95,28 @@
 				<div class="mui-button-row">
 					<button class="mui-btn  mui-btn-primary mui-btn-block">提交</button>
 				</div>
-
+<!--				
+				<alert :show.sync="show"
+				   :title="title"
+				   :content="content"></alert>-->
+				
 		</div>
 		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			var alert = mui.alert
+			var app = new Vue ({
+				el: '#app',
+				data: {
+					provinceCode: '',
+					postCode: ''
+				},
+				methods: {
+				},
+				components: {
+				}
+			}) 
 		</script>
 	</body>
 
