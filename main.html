@@ -188,17 +188,13 @@
 				for (let i in vm.list) {
 					if (vm.list[i].provCode === vm.questionList[j].provCode) {
 						if (vm.list[i].postCode === vm.questionList[j].postCode) {
-							// console.log('this answer is right ' + JSON.stringify(vm.list[i]))
 							vm.rightArr.push(vm.list[i])
 						} else {
 							vm.wrongArr.push(vm.list[i])
 						}
 					}
 				}
-
 			}
-			console.log(vm.wrongArr)
-			console.log(vm.rightArr)
 		}
 		function nextQuestion() {
 			vm.question.provCode = vm.provinceCode
