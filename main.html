@@ -1,189 +1,237 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
-		<!--<link href="../css/mui.css" rel="stylesheet" />-->
-		<link href="css/mui.css" rel="stylesheet" />
-		<style>
-			body {
-				font-family: "黑体";
-			}
-			
-			.mui-bar {
-				background: #007AFF;
-			}
-			
-			.mui-title {
-				color: #fff;
-			}
-			
-			.scan-delivery,
-			.scan-province {
-				background: #fff;
-				margin-top: 15px;
-				padding-bottom: 10px;
-			}
-			
-			.instruction {
-				padding: 10px;
-				color: #333;
-				background-color: #fafafa;
-				border: 1px solid #eee;
-				font-weight: bold;
-			}
-			
-			.mui-h6 {
-				margin: 5px 0 0 70px;
-			}
-			
-			.scan-delivery .mui-h6 {
-				margin: 10px 0 5px 20px;
-			}
-			
-			.mui-input-row label {
-				width: 60px;
-				margin-left: 10px;
-				text-align: center;
-				color: #007AFF;
-				font-weight: bold;
-				padding: 0;
-				vertical-align: middle;
-			}
-			
-			label img {
-				width: 40px;
-				vertical-align: middle;
-			}
-			
-			.mui-input-row .delete {
-				width: 40px;
-				vertical-align: middle;
-			}
-			
-			.mui-input-row label~input {
-				border-bottom: 1px solid #ccc;
-				border-radius: 0;
-				float: left;
-				font-family: arial;
-			}
-			
-			.mui-button-row {
-				margin: 15px 10px 5px;
-			}
-			
-			.mui-btn {
-				padding: 10px;
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<!--<link href="../css/mui.css" rel="stylesheet" />-->
+	<link href="css/mui.css" rel="stylesheet" />
+	<style>
+		body {
+			font-family: "黑体";
+		}
 
-	<body>
-		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
-			<h1 class="mui-title">分拣考试系统</h1>
-		</header>
-		<div class="mui-content" id="app">
-			<div class="scan-province">
-				<p class="instruction">扫描省包条码：</p>
-				<div class="mui-input-row">
-					<!--<label><img src="../img/sort/bar.png"></label>-->
-					<label><img src="images/bar.png"></label>
-					<input v-model="provinceCode" type="text" placeholder="请扫描省包条码">
-				</div>
-				<p class="mui-h6">提示：点击条形码图标重新扫描条码</p>
+		.mui-bar {
+			background: #007AFF;
+		}
 
-			</div>
+		.mui-title {
+			color: #fff;
+		}
 
-			<div class="scan-delivery">
-				<p class="instruction">扫描快件：</p>
-				<p class="mui-h6">已扫描快件：<strong>1</strong> 张</p>
-				<div class="mui-input-row" ms-visible="scanType=='single'">
-					<!--<label><img src="../img/sort/bar.png"></label>-->
-					<label><img src="images/bar.png"></label>
-					<input v-model='postCode' type="text" placeholder="请扫描快递单">
-					<!--<img src="../img/sort/minus-s.png" class="delete">-->
-					<!--<img src="images/minus-s.png" class="delete">-->
-				</div>
+		.scan-delivery,
+		.scan-province {
+			background: #fff;
+			margin-top: 15px;
+			padding-bottom: 10px;
+		}
+
+		.instruction {
+			padding: 10px;
+			color: #333;
+			background-color: #fafafa;
+			border: 1px solid #eee;
+			font-weight: bold;
+		}
+
+		.mui-h6 {
+			margin: 5px 0 0 70px;
+		}
+
+		.scan-delivery .mui-h6 {
+			margin: 10px 0 5px 20px;
+		}
+
+		.mui-input-row label {
+			width: 60px;
+			margin-left: 10px;
+			text-align: center;
+			color: #007AFF;
+			font-weight: bold;
+			padding: 0;
+			vertical-align: middle;
+		}
+
+		label img {
+			width: 40px;
+			vertical-align: middle;
+		}
+
+		.mui-input-row .delete {
+			width: 40px;
+			vertical-align: middle;
+		}
+
+		.mui-input-row label~input {
+			border-bottom: 1px solid #ccc;
+			border-radius: 0;
+			float: left;
+			font-family: arial;
+		}
+
+		.mui-button-row {
+			margin: 15px 10px 5px;
+		}
+
+		.mui-btn {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+		<h1 class="mui-title">分拣考试系统</h1>
+	</header>
+	<div class="mui-content" id="app">
+		<div class="scan-province">
+			<p class="instruction">扫描省包条码：</p>
+			<div class="mui-input-row">
+				<!--<label><img src="../img/sort/bar.png"></label>-->
+				<label><img src="images/bar.png"></label>
+				<input v-model="provinceCode" type="text" placeholder="请扫描省包条码">
 			</div>
-			<div class="mui-button-row">
-				<button class="mui-btn  mui-btn-primary mui-btn-block" onclick="nextQuestion()">下一题</button>
-			</div>
-			<div class="mui-button-row">
-				<button class="mui-btn  mui-btn-primary mui-btn-block">提交</button>
-			</div>
+			<p class="mui-h6">提示：点击条形码图标重新扫描条码</p>
 
 		</div>
-		<!--<script src="../js/mui.js"></script>
+
+		<div class="scan-delivery">
+			<p class="instruction">扫描快件：</p>
+			<p class="mui-h6">已扫描快件：<strong>1</strong> 张</p>
+			<div class="mui-input-row" ms-visible="scanType=='single'">
+				<!--<label><img src="../img/sort/bar.png"></label>-->
+				<label><img src="images/bar.png"></label>
+				<input v-model='postCode' type="text" placeholder="请扫描快递单">
+				<!--<img src="../img/sort/minus-s.png" class="delete">-->
+				<!--<img src="images/minus-s.png" class="delete">-->
+			</div>
+		</div>
+		<div class="mui-button-row">
+			<button class="mui-btn  mui-btn-primary mui-btn-block" onclick="nextQuestion()">下一题</button>
+		</div>
+		<div class="mui-button-row">
+			<button class="mui-btn  mui-btn-primary mui-btn-block" onclick="submitList()">提交</button>
+		</div>
+
+	</div>
+	<!--<script src="../js/mui.js"></script>
 		<script src="../js/vue.js"></script>
 		<script src="../js/light.js"></script>-->
 
-		<script src="js/mui.js"></script>
-		<script src="js/vue.js"></script>
-		<script type="text/javascript" src="js/light.js"></script>
-		
-		<script type="text/javascript">
-			mui.init()
-			var questionList = [{
-				p1: '1234',
-				p2:	'778899'
-			},{
-				p1: '1234',
-				p2:	'998877'
-			},{
-				p1: '1234',
-				p2:	'112233'
-			},{
-				p1: '22',
-				p2:	'123456'
-			},{
-				p1: '22',
-				p2:	'234567'
-			},{
-				p1: '22',
-				p2:	'345678'
-			}]
-			
-			var vm = new Vue({
-				el: '#app',
-				data: {
-					provinceCode: '',
-					postCode: '',
-					QRCodeScaning: false,
-					questionList: questionList,
-					list: []
+	<script src="js/mui.js"></script>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript" src="js/light.js"></script>
+
+	<script type="text/javascript">
+		mui.init()
+		var questionList = [{
+			provCode: '1234',
+			postCode: '778899'
+		}, {
+			provCode: '1234',
+			postCode: '998877'
+		}, {
+			provCode: '1234',
+			postCode: '112233'
+		}, {
+			provCode: '22',
+			postCode: '123456'
+		}, {
+			provCode: '22',
+			postCode: '234567'
+		}, {
+			provCode: '22',
+			postCode: '345678'
+		}, {
+			provCode: '1',
+			postCode: '1'
+		}, {
+			provCode: '2',
+			postCode: '2'
+		}, {
+			provCode: '3',
+			postCode: '3'
+		}]
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				provinceCode: '',
+				postCode: '',
+				QRCodeScaning: false,
+				questionList: questionList,
+				list: [],
+				question: {
+					provCode: '',
+					postCode: ''
 				},
-				methods: {
-					scanBarcode: scanBarcode
-				}
-			})
-			function nextQuestion () {
-				
+				rightArr: [],
+				wrongArr: []
+			},
+			methods: {
+				scanBarcode: scanBarcode,
+				nextQuestion: nextQuestion,
+				submitList: submitList
 			}
-			
-			function scanBarcode() {
-				if(vm.QRCodeScaning) {
-					mui.toast("已经启动扫描，请稍候...");
-					return;
-				}
-				vm.QRCodeScaning = true;
-				var arg = [];
-				arg.push(plus.storage.getItem("barEngine") || "ZXing"); //引擎
-				arg.push("single"); //逐单或连续扫描
-				arg.push("正在扫描面单条码..."); //提示语
-				light.pluginFun("scanCode", arg, function(result) {
-					console.log(JSON.stringify(result));
-					vm.QRCodeScaning = false;
-					if(result[0] != "用户取消") {
-						//	vm.delivery_no = result[0];
+		})
+		function submitList() {
+			vm.question.provCode = vm.provinceCode
+			vm.question.postCode = vm.postCode
+			vm.list.push(vm.question)
+			vm.question = {}
+			vm.provinceCode = ''
+			vm.postCode = ''
+			vm.rightArr = []
+			vm.wrongArr = []
+			for (let j in vm.questionList) {
+				for (let i in vm.list) {
+					if (vm.list[i].provCode === vm.questionList[j].provCode) {
+						if (vm.list[i].postCode === vm.questionList[j].postCode) {
+							// console.log('this answer is right ' + JSON.stringify(vm.list[i]))
+							vm.rightArr.push(vm.list[i])
+						} else {
+							vm.wrongArr.push(vm.list[i])
+						}
 					}
-				}, function(result) {
-					vm.QRCodeScaning = false;
-					mui.alert(result[0]);
-				});
+				}
+
 			}
-		</script>
-	</body>
+			console.log(vm.wrongArr)
+			console.log(vm.rightArr)
+		}
+		function nextQuestion() {
+			vm.question.provCode = vm.provinceCode
+			vm.question.postCode = vm.postCode
+			vm.list.push(vm.question)
+			vm.question = {}
+			vm.provinceCode = ''
+			vm.postCode = ''
+			// console.log(JSON.stringify(vm.list))
+		}
+
+		function scanBarcode() {
+			if (vm.QRCodeScaning) {
+				mui.toast("已经启动扫描，请稍候...");
+				return;
+			}
+			vm.QRCodeScaning = true;
+			var arg = [];
+			arg.push(plus.storage.getItem("barEngine") || "ZXing"); //引擎
+			arg.push("single"); //逐单或连续扫描
+			arg.push("正在扫描面单条码..."); //提示语
+			light.pluginFun("scanCode", arg, function (result) {
+				console.log(JSON.stringify(result));
+				vm.QRCodeScaning = false;
+				if (result[0] != "用户取消") {
+					//	vm.delivery_no = result[0];
+				}
+			}, function (result) {
+				vm.QRCodeScaning = false;
+				mui.alert(result[0]);
+			});
+		}
+	</script>
+</body>
 
 </html>
